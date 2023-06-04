@@ -7,7 +7,8 @@ class CreateForm(FlaskForm):
   username = StringField('Your name: ', validators=[InputRequired()])
   email = EmailField('Your email: ', validators=[InputRequired()])
   age = IntegerField('Your age: ', validators=[InputRequired()])
-  password = PasswordField('Your password:', validators=[InputRequired(), EqualTo('password_confirm', message='Passwords do not match')])
+  password = PasswordField('Your password:', validators=[InputRequired(), /
+  EqualTo('password_confirm', message='Passwords do not match')])
   password_confirm = PasswordField('Confirm password', validators=[InputRequired()])
 
 
