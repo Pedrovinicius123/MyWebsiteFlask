@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block link %}
+<link rel="stylesheet" href="{{url_for('static', filename='style0.css')}}" type="text/css">
+{% endblock %}
+{% block content %}
+{% if alert %}
+  <script>
+    alert("{{alert}}")
+  </script>
+{% endif %}
+<form method="POST">
+  {{form.csrf_token}}
+  {% for field in form %}
+    {{field.label}} {{field(class='fieldcls')}} <br>
+  {% endfor %}
+  <input type="submit" value="Go">
+</form>
+{% if errors %}
+  <script>
+    alert('{{errors}}')
+  </script>
+{% endif %}
+{% endblock %}
