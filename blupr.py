@@ -23,7 +23,7 @@ def blueprint():
   form = CreateForm()  
   
   if form.validate_on_submit():
-    return 'Ok'
+    pass
   
   errors = [{
     'field' : key,
@@ -39,17 +39,19 @@ def blueprint():
     username = request.form.get('username')
     email = request.form.get('email')
     password = request.form.get('password')
-    confirm_password = request.form.get('password_confirm')
 
     user = User(username, email, password)
-
+    
+    db.create_all()
     db.session.add(user)
     db.session.commit()
-    
-  return render_template('create.html', form=form, errors=errors, alert=alert)
+
+    return f'{user}'
 
 @bp.route('/recovery')
 def login():
+
+  db.create_all()
   
   users = User.query.all()
 

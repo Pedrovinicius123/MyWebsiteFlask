@@ -1,7 +1,6 @@
 from flask import render_template, redirect, url_for
 from flask_migrate import Migrate
 from blupr import bp
-from flask_sqlalchemy import SQLAlchemy
 from scriptpy import app
 from database import db
 import os
