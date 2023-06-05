@@ -1,10 +1,10 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import render_template, redirect, url_for
 from flask_migrate import Migrate
-from database import db
 from blupr import bp
+from flask_sqlalchemy import SQLAlchemy
+from scriptpy import app
+from database import db
 import os
-
-app = Flask(__name__)
 
 app.config['SECRET_KEY'] = os.environ['SECRET']
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydb.sqlite'
@@ -21,5 +21,5 @@ def startpage():
 def login():
   return render_template('login.html')
 
-
-app.run(host='0.0.0.0', port=81, debug=True)
+if __name__ == '__main__':
+  app.run(host='0.0.0.0', port=81, debug=True)
